@@ -9,9 +9,11 @@ public sealed class BusDataManagerService : IBusDataManagerService
     public BusDataManagerService(
         ILogger<BusDataManagerService> log,
         HttpClient client,
-        IOptions<BusDataOptions> options) =>
-        (_log, _client, _options) =
-            (log, client, options.Value);
+        IOptions<BusDataOptions> options) {
+            _log = log;
+            _client = client;
+            _options = options.Value;
+        }
 
     public async Task ProcessBusDataAsync()
     {
